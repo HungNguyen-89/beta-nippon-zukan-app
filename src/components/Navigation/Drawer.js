@@ -39,7 +39,7 @@ const SNavbarBrand = styled.h2`
 const Backdrop = styled.div`
   height: 100%;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
   position: absolute;
   top: 0;
   left: 0;

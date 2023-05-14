@@ -1,24 +1,36 @@
 export const routes = [
   {
-    name: "Home",
+    name: "Trang chủ",
     link: "/",
   },
   {
-    name: "Services",
-    link: "/services",
+    name: "Từ vựng",
+    link: "/tu-vung",
 
     subRoutes: [
       {
-        name: "Web Development",
-        link: "/service/web-development",
+        name: "N1",
+        link: "/tu-vung/N1",
       },
       {
-        name: "Mobile Development",
-        link: "/service/mobile-development",
+        name: "N2",
+        link: "/tu-vung/N2",
       },
       {
-        name: "UI/UX Design",
-        link: "/service/ui-ux-design",
+        name: "N3",
+        link: "/tu-vung/N3",
+      },
+      {
+        name: "N4",
+        link: "/tu-vung/N4",
+      },
+      {
+        name: "N5",
+        link: "/tu-vung/N5",
+      },
+      {
+        name: "Theo chủ đề",
+        link: "/tu-vung/theo-chu-de",
       },
     ],
   },
