@@ -7,15 +7,16 @@ import Header from "./components/Header";
 import Test from "./components/Test/Test";
 import FlashCard from "./components/FlashCard/FlashCard";
 import WordGuessGame from "./components/WordGuessGame/WordGuessGame";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/tu-vung-theo-chu-de" element={<FlashCard />} />
+        <Route path="/tu-vung" element={<FlashCard />} />
         <Route path="/game" element={<WordGuessGame />} />
       </Routes>
       <Footer />
