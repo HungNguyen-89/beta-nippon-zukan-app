@@ -25,7 +25,6 @@ const Drawer = ({ isOpen, toggleDrawer, routes }) => {
               );
             })}
           </NavRoutes>
-          <LoginButton>Login</LoginButton>
         </RightNav>
       </SDrawer>
     </>
@@ -39,7 +38,7 @@ const SNavbarBrand = styled.h2`
 const Backdrop = styled.div`
   height: 100%;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
   position: absolute;
   top: 0;
   left: 0;
@@ -51,7 +50,7 @@ const SDrawer = styled.div`
   z-index: 150;
   position: absolute;
   top: 0;
-  height: 100vh;
+
   width: 60%;
   background-color: white;
   transition: 0.3s ease;
@@ -72,19 +71,4 @@ const NavRoute = styled(Link)`
   color: black;
   font-size: 2.5rem;
   padding: 0.5rem;
-`;
-
-const LoginButton = styled.button`
-  padding: 0.7rem 3rem;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 3rem;
-  transition: 0.3s ease;
-  align-self: flex-start;
-  &:hover {
-    transition: 0.3s ease;
-    border: 1px solid transparent;
-    background-color: yellow;
-    box-shadow: 0px 0px 10px yellow;
-  }
 `;

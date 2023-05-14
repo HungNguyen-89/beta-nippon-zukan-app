@@ -28,6 +28,7 @@ const SubRoutesContainer = styled.div`
   visibility: hidden;
   opacity: 0;
   border-radius: 1rem;
+  z-index: 1000;
   transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 `;
 const SMenu = styled.div`
@@ -38,7 +39,6 @@ const SMenu = styled.div`
     visibility: visible;
     opacity: 1;
     cursor: pointer;
-    z-index: 1000;
     background: white;
   }
 `;
