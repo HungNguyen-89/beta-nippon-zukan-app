@@ -8,11 +8,12 @@ import Test from "./components/Test/Test";
 import FlashCard from "./components/FlashCard/FlashCard";
 import WordGuessGame from "./components/WordGuessGame/WordGuessGame";
 import Navigation from "./components/Navigation/Navigation";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<Test />} />

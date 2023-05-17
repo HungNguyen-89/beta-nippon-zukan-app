@@ -50,7 +50,6 @@ const SDrawer = styled.div`
   z-index: 150;
   position: absolute;
   top: 0;
-
   width: 60%;
   background-color: white;
   transition: 0.3s ease;
