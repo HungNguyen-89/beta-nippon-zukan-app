@@ -14,7 +14,7 @@ import NavbarTest from "./components/Navbar/NavbarTest";
 function App() {
   return (
     <div className="App">
-      <NavbarTest />
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<Test />} />
