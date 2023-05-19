@@ -6,6 +6,7 @@ import Test from "../Test/Test";
 import FlashCard from "../FlashCard/FlashCard";
 import WordGuessGame from "../WordGuessGame/WordGuessGame";
 import Footer from "../Footer";
+import NavbarMobile from "../Navbar/NavbarMobile";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -37,6 +38,7 @@ const PopUp = () => {
             </div>
             <div>
               <p>This is simple popup in React js</p>
+              <NavbarMobile setPopUp={setPop} />
             </div>
           </div>
         </div>
