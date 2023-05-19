@@ -10,18 +10,12 @@ import WordGuessGame from "./components/WordGuessGame/WordGuessGame";
 import Navigation from "./components/Navigation/Navigation";
 import Navbar from "./components/Navbar/Navbar";
 import NavbarTest from "./components/Navbar/NavbarTest";
+import PopUp from "./components/PopUp/PopUp";
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/tu-vung" element={<FlashCard />} />
-        <Route path="/game" element={<WordGuessGame />} />
-      </Routes>
-      <Footer />
+      <PopUp />
     </div>
   );
 }
