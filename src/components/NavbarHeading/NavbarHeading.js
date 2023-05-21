@@ -6,7 +6,7 @@ const NavbarHeading = () => {
   return (
     <div class="heading-container">
       <div className="heading">
-        <div className="heading-title">Ngữ pháp</div>
+        <div className="heading-title">Đề thi</div>
         <div className="heading-links">
           <Link className="heading-links-item active" to="/test">
             N1

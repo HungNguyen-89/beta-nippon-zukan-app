@@ -217,15 +217,22 @@ const Test = () => {
 
   return (
     <>
-      <header className="header">
-        <div id="title">第1回　模擬テスト</div>
-        <div id="check">
-          <button className="summit2" id="btn" onClick={() => Check2()}>
-            CHECK
-          </button>
+      <div className="test-header-container">
+        <div className="test-header">
+          <div className="test-header-left">
+            <div className="test-title">耳から覚える語彙</div>
+            <div className="test-number">TEST 1</div>
+          </div>
+
+          <div className="test-header-right">
+            <button className="submit" onClick={() => Check2()}>
+              CHECK
+            </button>
+          </div>
         </div>
-      </header>
-      <section className="test-background">
+      </div>
+
+      <div className="test-background">
         <div id="questionMondai1">
           問題 1.<span>　　　　　</span>
           の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。
@@ -271,7 +278,7 @@ const Test = () => {
               );
             })}
         </div>
-      </section>
+      </div>
     </>
   );
 };

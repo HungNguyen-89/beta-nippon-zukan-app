@@ -1,12 +1,12 @@
-*{
-    text-align: center;
-}
+// *{
+//     text-align: center;
+// }
 
 .testPopUp{
 
-    button{
-        display: none;
-    }
+    // button{
+    //     display: none;
+    // }
 
     .main{
  
@@ -35,11 +35,11 @@
       
     }
 
-    @media (max-width:760px){
-        button{
-            display: block;
-        }
-    }
+    // @media (max-width:760px){
+    //     button{
+    //         display: block;
+    //     }
+    // }
 }
 
 
