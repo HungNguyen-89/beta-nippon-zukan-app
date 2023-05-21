@@ -6,6 +6,8 @@ import Test from "../Test/Test";
 import FlashCard from "../FlashCard/FlashCard";
 import WordGuessGame from "../WordGuessGame/WordGuessGame";
 import Footer from "../Footer";
+import Navbar from "../Navbar/Navbar";
+import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import NavbarMobile from "../Navbar/NavbarMobile";
 
 const PopUp = () => {
@@ -21,8 +23,10 @@ const PopUp = () => {
       <button onClick={handleClickOpen}>Open popup</button>
       {popup ? (
         <div>
+          <Navbar />
+          <NavbarHeading />
           <Routes>
-            <Route path="/" element={<HomPage />} />
+            {/* <Route path="/" element={<HomPage />} /> */}
             <Route path="/test" element={<Test />} />
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
