@@ -66,11 +66,11 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
 .test-background {
-  padding: 0 9%;
+  padding: 10px 9%;
 
   #questionMondai1 {
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: 22px;
     font-weight: normal;
     letter-spacing: 0.35px;
     color: black;
@@ -81,7 +81,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   }
   #backgroundMondai1 {
     box-sizing: border-box;
-  
+
     .questionRandom {
       display: grid;
       grid-template-areas:
@@ -91,10 +91,10 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
       width: 100%;
       box-sizing: border-box;
       margin-bottom: 5px;
-  
+
       .questionNumber {
         grid-area: myArea;
-        font-size: 1.5rem;
+        font-size: 22px;
         font-weight: normal;
         letter-spacing: 0.35px;
         color: black;
@@ -105,9 +105,9 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
         width: 100%;
         box-sizing: border-box;
       }
-  
+
       .answerABCD {
-        font-size: 1.5rem;
+        font-size: 22px;
         font-weight: normal;
         letter-spacing: 0.35px;
         color: black;
@@ -117,28 +117,28 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
         text-align: left;
         box-sizing: border-box;
       }
-  
+
       .answer0 {
         grid-area: myArea-A;
       }
-  
+
       .answer1 {
         grid-area: myArea-B;
       }
-  
+
       .answer2 {
         grid-area: myArea-C;
       }
-  
+
       .answer3 {
         grid-area: myArea-D;
       }
-  
+
       .selectAnswerABCD {
         display: flex;
         grid-area: myArea-E;
         width: 100%;
-  
+
         .selectAnswer {
           width: 5rem;
           height: 2.6rem;
@@ -146,7 +146,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
           border: 1px solid black;
           font-size: 1.5rem;
         }
-  
+
         .textHidden {
           -webkit-user-select: none;
           -moz-user-select: none;
@@ -158,16 +158,28 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   }
 }
 
-
-
 @media (max-width: 600px) {
   .test-header-container {
     .test-header {
       flex-direction: column;
       align-items: flex-start;
+
+      .test-header-left {
+        .test-title {
+          font-size: 20px;
+        }
+
+        .test-number {
+          font-size: 20px;
+        }
+      }
     }
   }
   .test-background {
+    #questionMondai1 {
+      font-size: 20px;
+    }
+
     #backgroundMondai1 {
       .questionRandom {
         grid-template-areas:
@@ -178,6 +190,14 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
           "myArea-D"
           "myArea-E";
         grid-template-columns: 1fr;
+
+        .questionNumber {
+          font-size: 20px;
+        }
+
+        .answerABCD {
+          font-size: 20px;
+        }
       }
     }
   }
