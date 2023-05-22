@@ -8,7 +8,7 @@ const NavbarHeading = () => {
       <div className="heading">
         <div className="heading-title">Đề thi</div>
         <div className="heading-links">
-          <Link className="heading-links-item active" to="/test">
+          <Link className="heading-links-item active" to="/de-thi">
             N1
           </Link>
           <Link className="heading-links-item" to="/">

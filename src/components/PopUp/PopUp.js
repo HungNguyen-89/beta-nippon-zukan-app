@@ -9,6 +9,7 @@ import Footer from "../Footer";
 import Navbar from "../Navbar/Navbar";
 import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import NavbarMobile from "../Navbar/NavbarMobile";
+import ExamPageAll from "../ExamPage/ExamPageAll";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -27,7 +28,8 @@ const PopUp = () => {
           <NavbarHeading />
           <Routes>
             {/* <Route path="/" element={<HomPage />} /> */}
-            <Route path="/test" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} /> */}
+            <Route path="/de-thi" element={<ExamPageAll />} />
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>
