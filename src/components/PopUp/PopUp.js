@@ -10,6 +10,7 @@ import Navbar from "../Navbar/Navbar";
 import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import ExamPageAll from "../ExamPage/ExamPageAll";
+import ExamPageSingle from "../ExamPage/ExamPageSingle";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -28,8 +29,9 @@ const PopUp = () => {
           <NavbarHeading />
           <Routes>
             {/* <Route path="/" element={<HomPage />} /> */}
-            {/* <Route path="/test" element={<Test />} /> */}
-            <Route path="/de-thi" element={<ExamPageAll />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/de-thi-tong-hop" element={<ExamPageAll />} />
+            <Route path="/de-thi" element={<ExamPageSingle />} />
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>

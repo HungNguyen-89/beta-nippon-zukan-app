@@ -8,13 +8,13 @@ const NavbarHeading = () => {
       <div className="heading">
         <div className="heading-title">Đề thi</div>
         <div className="heading-links">
-          <Link className="heading-links-item active" to="/de-thi">
+          <Link className="heading-links-item active" to="/de-thi-tong-hop">
             N1
           </Link>
-          <Link className="heading-links-item" to="/">
+          <Link className="heading-links-item" to="/test">
             N2
           </Link>
-          <Link className="heading-links-item" to="/">
+          <Link className="heading-links-item" to="/de-thi">
             N3
           </Link>
           <Link className="heading-links-item" to="/">
