@@ -41,7 +41,6 @@ const NavbarMobile = ({ setPopUp }) => {
               Ngữ pháp
             </Link>
           </li>
-          <NavLinks />
         </ul>
       </div>
     </div>

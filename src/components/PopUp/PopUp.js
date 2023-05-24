@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./PopUp.scss";
 import { Route, Routes } from "react-router-dom";
-import HomPage from "../HomePage";
 import Test from "../Test/Test";
 import FlashCard from "../FlashCard/FlashCard";
 import WordGuessGame from "../WordGuessGame/WordGuessGame";
@@ -11,6 +10,8 @@ import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import ExamPageAll from "../ExamPage/ExamPageAll";
 import ExamPageSingle from "../ExamPage/ExamPageSingle";
+import { MdOutlineClose } from "react-icons/md";
+import Logo from "../../assets/Logo/learn-language.png";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -22,10 +23,9 @@ const PopUp = () => {
   };
   return (
     <div className="testPopUp">
-      <button onClick={handleClickOpen}>Open popup</button>
       {popup ? (
         <div>
-          <Navbar />
+          <Navbar handleClickOpen={handleClickOpen} />
           <NavbarHeading />
           <Routes>
             {/* <Route path="/" element={<HomPage />} /> */}
@@ -41,11 +41,20 @@ const PopUp = () => {
         <div className="main">
           <div className="popup">
             <div className="popup-header">
-              <h1>popup</h1>
-              <h1 onClick={closePopup}>X</h1>
+              <div className="popup-navbar-logo">
+                <img src={Logo} />
+                <p>NIPPON-ZUKAN</p>
+              </div>
+              <div className="popup-right">
+                <MdOutlineClose
+                  className="closeBtnPopUp"
+                  size={"3rem"}
+                  onClick={closePopup}
+                />
+              </div>
             </div>
+
             <div>
-              <p>This is simple popup in React js</p>
               <NavbarMobile setPopUp={setPop} />
             </div>
           </div>

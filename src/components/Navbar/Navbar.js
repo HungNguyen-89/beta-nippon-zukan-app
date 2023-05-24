@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../../assets/Logo/learn-language.png";
+import { TbListSearch } from "react-icons/tb";
 
-const Navbar = () => {
+const Navbar = ({ handleClickOpen }) => {
   const links = [
     { name: "Trang chủ" },
     { name: "Từ vựng" },
@@ -25,6 +26,14 @@ const Navbar = () => {
             <p>{link.name}</p>
           </div>
         ))}
+      </div>
+      <div
+        className="popUpBtn"
+        onClick={() => {
+          handleClickOpen(false);
+        }}
+      >
+        <TbListSearch size={"3rem"} />
       </div>
     </div>
   );
