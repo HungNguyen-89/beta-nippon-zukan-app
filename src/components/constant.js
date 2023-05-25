@@ -2,11 +2,12 @@ export const routes = [
   {
     name: "Trang chủ",
     link: "/",
+    subMenu: false,
   },
   {
     name: "Từ vựng",
     link: "/tu-vung",
-
+    subMenu: true,
     subRoutes: [
       {
         name: "N1",
@@ -37,7 +38,7 @@ export const routes = [
   {
     name: "Ngữ pháp",
     link: "/ngu-phap",
-
+    subMenu: true,
     subRoutes: [
       {
         name: "N1",
@@ -68,7 +69,7 @@ export const routes = [
   {
     name: "Đề thi",
     link: "/de-thi",
-
+    subMenu: true,
     subRoutes: [
       {
         name: "N1",
@@ -99,7 +100,7 @@ export const routes = [
   {
     name: "Media",
     link: "/media",
-
+    subMenu: true,
     subRoutes: [
       {
         name: "Video",
@@ -114,7 +115,7 @@ export const routes = [
   {
     name: "Games",
     link: "/games",
-
+    subMenu: true,
     subRoutes: [
       {
         name: "Nhìn Kanji đoán chữ",
@@ -129,5 +130,6 @@ export const routes = [
   {
     name: "Blog",
     link: "/blog",
+    subMenu: false,
   },
 ];
