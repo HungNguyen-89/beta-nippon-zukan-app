@@ -15,10 +15,15 @@
       // padding-bottom: 5px;
 
       .mobile-nav-link {
-        font-size: 25px;
+        width: 85%;
+        font-size: 20px;
         color: black;
         padding: 10px 0 10px 0;
         font-weight: 500;
+      }
+
+      .moble-nav-link-arrown{
+        width: 15%;
       }
     }
 

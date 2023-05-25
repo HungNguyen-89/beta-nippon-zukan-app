@@ -28,7 +28,7 @@ const NavbarMobile = ({ setPopUp }) => {
                 {route.subMenu &&
                   (heading === route.name ? (
                     <MdOutlineKeyboardArrowUp
-                      // className="moble-nav-link-arrown-down"
+                      className="moble-nav-link-arrown"
                       size={"20px"}
                       onClick={() =>
                         heading !== route.name
@@ -38,7 +38,7 @@ const NavbarMobile = ({ setPopUp }) => {
                     />
                   ) : (
                     <MdOutlineKeyboardArrowDown
-                      //  className="moble-nav-link-arrown-up"
+                      className="moble-nav-link-arrown"
                       size={"20px"}
                       onClick={() =>
                         heading !== route.name
