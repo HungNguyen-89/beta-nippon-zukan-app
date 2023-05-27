@@ -17,11 +17,17 @@ const NavbarMobile = ({ setPopUp }) => {
             <li>
               <div className="mobile-nav-link-container">
                 <Link
-                  to={route.link}
+                  // to={route.link}
                   className="mobile-nav-link"
-                  onClick={() => {
-                    setPopUp(true);
-                  }}
+                  // onClick={() => {
+                  //   setPopUp(true);
+                  // }}
+
+                  onClick={() =>
+                    heading !== route.name
+                      ? setHeading(route.name)
+                      : setHeading("")
+                  }
                 >
                   {route.name}
                 </Link>
