@@ -32,16 +32,16 @@ const getRandomIndexOfArray = (array) => {
   return e;
 };
 
-const getRandomIndexOfArray2 = (array) => {
-  const result = array.map((item) => {
-    return item.answerToChoose;
-  });
+// const getRandomIndexOfArray2 = (array) => {
+//   const result = array.map((item) => {
+//     return item.answerToChoose;
+//   });
 
-  const result2 = result.map((item) => {
-    return getRandomIndexOfArray(item);
-  });
-  return result2;
-};
+//   const result2 = result.map((item) => {
+//     return getRandomIndexOfArray(item);
+//   });
+//   return result2;
+// };
 
 const Test = () => {
   // const [randomData, setRandomData] = useState(() =>
@@ -66,6 +66,25 @@ const Test = () => {
     asyncFn();
   }, []);
 
+  // useEffect(() => {
+  //   const data2 = dataTest.testQuestionAll?.map((test) => {
+  //     const data5 = getRandomIndexOfArray(test.testQuestions);
+  //     const data3 = data5?.map((test3) => {
+  //       return getRandomIndexOfArray(test3.answerToChoose);
+  //     });
+
+  //     return {
+  //       question: test.testQuestionTitle,
+  //       testQuestions: data5,
+  //       testAnswerRandom: data3,
+  //     };
+  //   });
+
+  //   setData1(data2);
+  // }, []);
+
+  const [refreshData, setRefreshData] = useState(false);
+
   const data1 = dataTest.testQuestionAll?.map((test) => {
     const data5 = getRandomIndexOfArray(test.testQuestions);
     const data3 = data5?.map((test3) => {
@@ -79,11 +98,20 @@ const Test = () => {
     };
   });
 
-  // const data2 = data1?.map((test) => {
-  //   return test.testQuestions?.map((test2) => {
-  //     return getRandomIndexOfArray(test2.answerToChoose);
-  //   });
-  // });
+  useEffect(() => {
+    const data1 = dataTest.testQuestionAll?.map((test) => {
+      const data5 = getRandomIndexOfArray(test.testQuestions);
+      const data3 = data5?.map((test3) => {
+        return getRandomIndexOfArray(test3.answerToChoose);
+      });
+
+      return {
+        question: test.testQuestionTitle,
+        testQuestions: data5,
+        testAnswerRandom: data3,
+      };
+    });
+  }, [refreshData]);
 
   console.log(data1);
 
@@ -211,8 +239,9 @@ const Test = () => {
     });
   };
 
-  const Check2 = () => {};
-  // const Check = () => {};
+  const Check2 = () => {
+    setRefreshData(!refreshData);
+  };
 
   return (
     <>
