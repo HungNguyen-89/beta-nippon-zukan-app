@@ -1,74 +1,10 @@
 import { useEffect } from "react";
 import "./Test.scss";
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 const array1 = ["A.", "B.", "C.", "D."];
-
-const DATA = [
-  {
-    key1: (
-      <span>
-        私は速くから彼女が働く<span style={{ color: "blue" }}>姿</span>
-        を見ていた
-      </span>
-    ),
-    key2: 2,
-    key3: ["すかた", "すがた", "すはた", "すはだ"],
-  },
-  {
-    key1: (
-      <span>
-        スポーツをする時は、ときどき水分を
-        <span style={{ color: "blue" }}>補った</span>
-        ほうがいい。
-      </span>
-    ),
-    key2: 4,
-    key3: ["とった", "あたった", "たもった", "おぎなった"],
-  },
-  {
-    key1: (
-      <span>
-        3人に1人の<span style={{ color: "blue" }}>割合</span>
-        で、その試験に合格している。
-      </span>
-    ),
-    key2: 3,
-    key3: ["かつあい", "かっごう", "わりあい", "わりごう"],
-  },
-  {
-    key1: (
-      <span>
-        それでは、来月の
-        <span style={{ color: "blue" }}>中旬</span>
-        にまたご連絡します。
-      </span>
-    ),
-    key2: 4,
-    key3: ["なかば", "なかごろ", "ちゅうかん", "ちゅうじゅん"],
-  },
-  {
-    key1: (
-      <span>
-        病気やけがに
-        <span style={{ color: "blue" }}>備えて</span>
-        、危険に入っておいたほうがいい。
-      </span>
-    ),
-    key2: 2,
-    key3: ["ささえて", "そなえて", "そろえて", "ひかえて"],
-  },
-  {
-    key1: (
-      <span>
-        ズボンの前と後ろを<span style={{ color: "blue" }}>逆</span>
-        にはいていた。
-      </span>
-    ),
-    key2: 3,
-    key3: ["きゃく", "きゃぐ", "ぎゃく", "ぎゃぐ"],
-  },
-];
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -98,7 +34,7 @@ const getRandomIndexOfArray = (array) => {
 
 const getRandomIndexOfArray2 = (array) => {
   const result = array.map((item) => {
-    return item.key3;
+    return item.answerToChoose;
   });
 
   const result2 = result.map((item) => {
@@ -108,23 +44,76 @@ const getRandomIndexOfArray2 = (array) => {
 };
 
 const Test = () => {
-  const [randomData, setRandomData] = useState(() =>
-    getRandomIndexOfArray(DATA)
-  );
+  // const [randomData, setRandomData] = useState(() =>
+  //   getRandomIndexOfArray(DATA)
+  // );
+  const { id } = useParams();
 
-  const [randomData2, setRandomData2] = useState(() =>
-    getRandomIndexOfArray2(randomData)
-  );
+  const urlStart = id.slice(0, -7);
+  const urlEnd = id.slice(-6);
+  console.log(urlStart, urlEnd);
+  const [dataTest, setDataTest] = useState([]);
+  useEffect(() => {
+    const asyncFn = async () => {
+      let res = await axios.get(
+        `https://db-beta-nippon-zukan.onrender.com/${urlStart}/${urlEnd}`
+      );
+      let data = res && res.data ? res.data : [];
+      // console.log(res.data);
+      setDataTest(data);
+    };
 
-  console.log(randomData);
-  console.log(randomData2);
+    asyncFn();
+  }, []);
 
-  const Check = (x) => {
-    let mark = true;
-    let index;
-    let chon = "chon" + x;
-    let kt = "check" + x;
-    let dapan = "dapan" + x;
+  const data1 = dataTest.testQuestionAll?.map((test) => {
+    const data5 = getRandomIndexOfArray(test.testQuestions);
+    const data3 = data5?.map((test3) => {
+      return getRandomIndexOfArray(test3.answerToChoose);
+    });
+
+    return {
+      question: test.testQuestionTitle,
+      testQuestions: data5,
+      testAnswerRandom: data3,
+    };
+  });
+
+  // const data2 = data1?.map((test) => {
+  //   return test.testQuestions?.map((test2) => {
+  //     return getRandomIndexOfArray(test2.answerToChoose);
+  //   });
+  // });
+
+  console.log(data1);
+
+  // console.log(data2);
+
+  // const [randomData, setRandomData] = useState(() => {
+  //   return data123;
+  // });
+  // setRandomData(data123);
+  // console.log(randomData);
+
+  // const [randomData2, setRandomData2] = useState(() =>
+  //   getRandomIndexOfArray2(data123)
+  // );
+
+  // console.log(randomData);
+  //console.log(randomData2);
+
+  const Check = (x, y) => {
+    //let mark = true;
+    const index = `${x}${y}`;
+    const answerA = document.getElementById(index + "0");
+    const answerB = document.getElementById(index + "1");
+    const answerC = document.getElementById(index + "2");
+    const answerD = document.getElementById(index + "3");
+    let indexAnswer;
+
+    let chon = "chon" + index;
+    let kt = "check" + index;
+    let dapan = "dapan" + index;
     console.log(chon);
     let a = document.getElementById(chon).value;
     console.log(a);
@@ -132,74 +121,83 @@ const Test = () => {
     switch (a) {
       case "A": {
         b = 0;
-        document.getElementById(x + "0").style.color = "blue";
-        document.getElementById(x + "1").style.color = "black";
-        document.getElementById(x + "2").style.color = "black";
-        document.getElementById(x + "3").style.color = "black";
+        answerA.style.color = "blue";
+        answerB.style.color = "black";
+        answerC.style.color = "black";
+        answerD.style.color = "black";
         break;
       }
       case "B": {
         b = 1;
-        document.getElementById(x + "0").style.color = "black";
-        document.getElementById(x + "1").style.color = "blue";
-        document.getElementById(x + "2").style.color = "black";
-        document.getElementById(x + "3").style.color = "black";
+        answerA.style.color = "black";
+        answerB.style.color = "blue";
+        answerC.style.color = "black";
+        answerD.style.color = "black";
         break;
       }
       case "C": {
         b = 2;
-        document.getElementById(x + "0").style.color = "black";
-        document.getElementById(x + "1").style.color = "black";
-        document.getElementById(x + "2").style.color = "blue";
-        document.getElementById(x + "3").style.color = "black";
+        answerA.style.color = "black";
+        answerB.style.color = "black";
+        answerC.style.color = "blue";
+        answerD.style.color = "black";
         break;
       }
       case "D": {
         b = 3;
-        document.getElementById(x + "0").style.color = "black";
-        document.getElementById(x + "1").style.color = "black";
-        document.getElementById(x + "2").style.color = "black";
-        document.getElementById(x + "3").style.color = "blue";
+        answerA.style.color = "black";
+        answerB.style.color = "black";
+        answerC.style.color = "black";
+        answerD.style.color = "blue";
         break;
       }
       case "": {
         b = -1;
-        document.getElementById(x + "0").style.color = "black";
-        document.getElementById(x + "1").style.color = "black";
-        document.getElementById(x + "2").style.color = "black";
-        document.getElementById(x + "3").style.color = "black";
+        answerA.style.color = "black";
+        answerB.style.color = "black";
+        answerC.style.color = "black";
+        answerD.style.color = "black";
         break;
       }
     }
 
+    console.log(data1[x].testQuestions[y].answer);
+    console.log(data1[x].testQuestions[y].answerToChoose);
+    console.log(data1[x].testAnswerRandom[y]);
+
     for (let i = 0; i < 4; i++) {
-      let a = randomData[x].key3;
-      let b = randomData[x].key2;
-      if (randomData2[x][i] === a[b - 1]) {
-        index = i;
+      let a = data1[x].testQuestions[y].answerToChoose;
+      let b = data1[x].testQuestions[y].answer;
+      if (data1[x].testAnswerRandom[y][i] === a[b - 1]) {
+        indexAnswer = i;
       }
     }
 
+    console.log(indexAnswer);
+
     if (b !== -1) {
-      if (index === b) {
+      if (indexAnswer === b) {
         document.getElementById(kt).innerHTML = "正解";
       } else {
         document.getElementById(kt).innerHTML = "NG";
       }
-      document.getElementById(dapan).innerHTML = index + 1;
+      document.getElementById(dapan).innerHTML = indexAnswer + 1;
     } else {
       document.getElementById(kt).innerHTML = "";
       document.getElementById(dapan).innerHTML = "";
     }
   };
 
-  const answerDisplay = (index) => {
+  const answerDisplay = (index, index1, array) => {
     const steps = [];
-    for (let i = 0; i < randomData2[index].length; i++) {
+    for (let i = 0; i < array.length; i++) {
       steps.push(
-        <div className={`answerABCD answer${i}`} id={index + `${i}`}>
+        <div
+          className={`answerABCD answer${i}`}
+          id={`${index}` + index1 + `${i}`}
+        >
           {array1[i]}
-          {randomData2[index][i]}
+          {array[i]}
         </div>
       );
     }
@@ -214,6 +212,7 @@ const Test = () => {
   };
 
   const Check2 = () => {};
+  // const Check = () => {};
 
   return (
     <>
@@ -221,7 +220,7 @@ const Test = () => {
         <div className="test-header">
           <div className="test-header-left">
             <div className="test-title">耳から覚える語彙</div>
-            <div className="test-number">TEST 1</div>
+            <div className="test-number">{dataTest.testSerial}</div>
           </div>
 
           <div className="test-header-right">
@@ -233,51 +232,56 @@ const Test = () => {
       </div>
 
       <div className="test-background">
-        <div id="questionMondai1">
-          問題 1.<span>　　　　　</span>
-          の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。
-        </div>
-        <div id="backgroundMondai1">
-          {randomData &&
-            randomData.length > 0 &&
-            randomData.map((item, index) => {
-              return (
-                <div className="questionRandom">
-                  <div className="questionNumber">
-                    {index + 1}
-                    {`. `}
-                    {item.key1}
-                  </div>
-                  {answerDisplay(index)}
-                  <div className="selectAnswerABCD">
-                    <div id={`select${index}`}>
-                      <select
-                        className="selectAnswer"
-                        id={`chon${index}`}
-                        onChange={() => Check(index)}
-                      >
-                        <option value=""></option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                      </select>
+        {data1?.map((data, index) => (
+          <>
+            <div id="questionMondai1">{data.question}</div>
+            <div id="backgroundMondai1">
+              {data.testQuestions &&
+                data.testQuestions?.map((item, index1) => {
+                  return (
+                    <div className="questionRandom">
+                      <div className="questionNumber">
+                        {index1 + 1}
+                        {`. `}
+                        {item.question}
+                      </div>
+                      {answerDisplay(
+                        index,
+                        index1,
+                        data.testAnswerRandom[index1]
+                      )}
+
+                      <div className="selectAnswerABCD">
+                        <div id={`select${index}${index1}`}>
+                          <select
+                            className="selectAnswer"
+                            id={`chon${index}${index1}`}
+                            onChange={() => Check(index, index1)}
+                          >
+                            <option value=""></option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                          </select>
+                        </div>
+                        <div
+                          className="textHidden"
+                          id={`check${index}${index1}`}
+                          style={{ color: "black" }}
+                        ></div>
+                        <div
+                          className="textHidden"
+                          id={`dapan${index}${index1}`}
+                          style={{ color: "black" }}
+                        ></div>
+                      </div>
                     </div>
-                    <div
-                      className="textHidden"
-                      id={`check${index}`}
-                      style={{ color: "black" }}
-                    ></div>
-                    <div
-                      className="textHidden"
-                      id={`dapan${index}`}
-                      style={{ color: "black" }}
-                    ></div>
-                  </div>
-                </div>
-              );
-            })}
-        </div>
+                  );
+                })}
+            </div>
+          </>
+        ))}
       </div>
     </>
   );

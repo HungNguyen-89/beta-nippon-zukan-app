@@ -11,7 +11,10 @@ const NavbarHeading = () => {
           <Link className="heading-links-item active" to="/de-thi-tong-hop">
             N1
           </Link>
-          <Link className="heading-links-item" to="/test">
+          <Link
+            className="heading-links-item"
+            // to="/test/power-drill-vocabulary-n2"
+          >
             N2
           </Link>
           <Link className="heading-links-item" to="/de-thi">

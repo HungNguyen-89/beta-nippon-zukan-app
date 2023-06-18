@@ -29,9 +29,9 @@ const PopUp = () => {
           <NavbarHeading />
           <Routes>
             {/* <Route path="/" element={<HomPage />} /> */}
-            <Route path="/test" element={<Test />} />
+            <Route path="/test/:id" element={<Test />} />
             <Route path="/de-thi-tong-hop" element={<ExamPageAll />} />
-            <Route path="/de-thi" element={<ExamPageSingle />} />
+            <Route path="/de-thi/" element={<ExamPageSingle />} />
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>
