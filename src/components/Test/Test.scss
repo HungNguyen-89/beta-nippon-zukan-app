@@ -70,10 +70,11 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
   #questionMondai1 {
     box-sizing: border-box;
-    font-size: 22px;
-    font-weight: normal;
+    font-size: 20px;
+    font-weight: bold;
     letter-spacing: 0.35px;
     color: black;
+    
 
     span {
       text-decoration-line: underline !important;
@@ -81,6 +82,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   }
   #backgroundMondai1 {
     box-sizing: border-box;
+    padding-bottom: 20px;
 
     .questionRandom {
       display: grid;
@@ -94,7 +96,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
       .questionNumber {
         grid-area: myArea;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: normal;
         letter-spacing: 0.35px;
         color: black;

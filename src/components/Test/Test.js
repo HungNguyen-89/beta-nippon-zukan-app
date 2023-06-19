@@ -99,7 +99,7 @@ const Test = () => {
   });
 
   useEffect(() => {
-    const data1 = dataTest.testQuestionAll?.map((test) => {
+    const data1 = dataTest.testQuestionAll?.map((test, index) => {
       const data5 = getRandomIndexOfArray(test.testQuestions);
       const data3 = data5?.map((test3) => {
         return getRandomIndexOfArray(test3.answerToChoose);
@@ -112,6 +112,17 @@ const Test = () => {
       };
     });
   }, [refreshData]);
+
+  console.log(dataTest);
+
+  // useEffect(() => {
+  //   data1?.map((data, index) => {
+  //     data.testQuestions &&
+  //       data.testQuestions?.map((index1) => {
+  //         return (document.getElementById(`chon${index}${index1}`).value = "");
+  //       });
+  //   });
+  // }, [refreshData]);
 
   console.log(data1);
 
@@ -220,10 +231,7 @@ const Test = () => {
     const steps = [];
     for (let i = 0; i < array.length; i++) {
       steps.push(
-        <div
-          className={`answerABCD answer${i}`}
-          id={`${index}` + index1 + `${i}`}
-        >
+        <div className={`answerABCD answer${i}`} id={`${index}${index1}${i}`}>
           {array1[i]}
           {array[i]}
         </div>
@@ -240,6 +248,26 @@ const Test = () => {
   };
 
   const Check2 = () => {
+    const a = dataTest.testQuestionAll;
+    // const b = a[0].testQuestions;
+    // console.log(b);
+    // dataTest.testQuestionAll?.forEach((test, index) => {
+    //   test.testQuestions?.forEach((index1) => {
+    //     document.getElementById("chon" + `${index}${index1}`).value = "";
+    //   });
+    // });
+
+    for (let i = 0; i < a.length; i++) {
+      for (let j = 0; j < a[i].testQuestions.length; j++) {
+        document.getElementById(`chon${i}${j}`).value = "";
+        document.getElementById(`${i}${j}0`).style.color = "black";
+        document.getElementById(`${i}${j}1`).style.color = "black";
+        document.getElementById(`${i}${j}2`).style.color = "black";
+        document.getElementById(`${i}${j}3`).style.color = "black";
+      }
+    }
+    // document.getElementById("chon00").value = "";
+    // document.getElementById("chon01").value = "";
     setRefreshData(!refreshData);
   };
 
@@ -254,7 +282,7 @@ const Test = () => {
 
           <div className="test-header-right">
             <button className="submit" onClick={() => Check2()}>
-              CHECK
+              RESET
             </button>
           </div>
         </div>
@@ -272,7 +300,7 @@ const Test = () => {
                       <div className="questionNumber">
                         {index1 + 1}
                         {`. `}
-                        {item.question}
+                        <span>{item.question}</span>
                       </div>
                       {answerDisplay(
                         index,
