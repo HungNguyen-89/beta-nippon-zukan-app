@@ -276,7 +276,7 @@ const Test = () => {
       <div className="test-header-container">
         <div className="test-header">
           <div className="test-header-left">
-            <div className="test-title">耳から覚える語彙</div>
+            <div className="test-title">{dataTest.testName}</div>
             <div className="test-number">{dataTest.testSerial}</div>
           </div>
 
@@ -300,7 +300,9 @@ const Test = () => {
                       <div className="questionNumber">
                         {index1 + 1}
                         {`. `}
-                        <span>{item.question}</span>
+                        {item.question1}
+                        <span className="textTest">{item.question2}</span>
+                        {item.question3}
                       </div>
                       {answerDisplay(
                         index,
