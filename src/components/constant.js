@@ -73,27 +73,27 @@ export const routes = [
     subRoutes: [
       {
         name: "N1",
-        link: "/de-thi/N1",
+        link: "/de-thi/de-thi-n1",
       },
       {
         name: "N2",
-        link: "/de-thi/N2",
+        link: "/de-thi/de-thi-n2",
       },
       {
         name: "N3",
-        link: "/de-thi/N3",
+        link: "/de-thi/de-thi-n3",
       },
       {
         name: "N4",
-        link: "/de-thi/N4",
+        link: "/de-thi/de-thi-n4",
       },
       {
         name: "N5",
-        link: "/de-thi/N5",
+        link: "/de-thi/de-thi-n5",
       },
       {
         name: "Tổng hợp",
-        link: "/de-thi/tong-hop",
+        link: "/de-thi/de-thi-tong-hop",
       },
     ],
   },

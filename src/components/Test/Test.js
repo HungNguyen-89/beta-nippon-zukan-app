@@ -260,7 +260,9 @@ const Test = () => {
       <div className="test-header-container">
         <div className="test-header">
           <div className="test-header-left">
-            <div className="test-title">{dataTest.testName}</div>
+            <Link className="test-title" to={`/tests/${dataTest.link}`}>
+              {dataTest.testName}
+            </Link>
             <div className="test-number">{dataTest.testSerial}</div>
           </div>
 
