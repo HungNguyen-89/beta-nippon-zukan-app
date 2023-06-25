@@ -3,6 +3,7 @@ import "./Test.scss";
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import NavbarHeading from "../NavbarHeading/NavbarHeading";
 
 const array1 = ["A.", "B.", "C.", "D."];
 
@@ -32,22 +33,23 @@ const getRandomIndexOfArray = (array) => {
   return e;
 };
 
-// const getRandomIndexOfArray2 = (array) => {
-//   const result = array.map((item) => {
-//     return item.answerToChoose;
-//   });
-
-//   const result2 = result.map((item) => {
-//     return getRandomIndexOfArray(item);
-//   });
-//   return result2;
-// };
-
 const Test = () => {
-  // const [randomData, setRandomData] = useState(() =>
-  //   getRandomIndexOfArray(DATA)
-  // );
   const { id } = useParams();
+  const [currentCase, setCurrentCase] = useState("");
+
+  useEffect(() => {
+    if (id.includes("n1")) {
+      setCurrentCase(1);
+    } else if (id.includes("n2")) {
+      setCurrentCase(2);
+    } else if (id.includes("n3")) {
+      setCurrentCase(3);
+    } else if (id.includes("n4")) {
+      setCurrentCase(4);
+    } else if (id.includes("n5")) {
+      setCurrentCase(5);
+    }
+  }, [id]);
 
   const urlStart = id.slice(0, -7);
   const urlEnd = id.slice(-6);
@@ -59,29 +61,12 @@ const Test = () => {
         `https://db-beta-nippon-zukan.onrender.com/${urlStart}/${urlEnd}`
       );
       let data = res && res.data ? res.data : [];
-      // console.log(res.data);
+
       setDataTest(data);
     };
 
     asyncFn();
-  }, []);
-
-  // useEffect(() => {
-  //   const data2 = dataTest.testQuestionAll?.map((test) => {
-  //     const data5 = getRandomIndexOfArray(test.testQuestions);
-  //     const data3 = data5?.map((test3) => {
-  //       return getRandomIndexOfArray(test3.answerToChoose);
-  //     });
-
-  //     return {
-  //       question: test.testQuestionTitle,
-  //       testQuestions: data5,
-  //       testAnswerRandom: data3,
-  //     };
-  //   });
-
-  //   setData1(data2);
-  // }, []);
+  }, [currentCase]);
 
   const [refreshData, setRefreshData] = useState(false);
 
@@ -99,7 +84,7 @@ const Test = () => {
   });
 
   useEffect(() => {
-    const data1 = dataTest.testQuestionAll?.map((test, index) => {
+    dataTest.testQuestionAll?.map((test) => {
       const data5 = getRandomIndexOfArray(test.testQuestions);
       const data3 = data5?.map((test3) => {
         return getRandomIndexOfArray(test3.answerToChoose);
@@ -115,31 +100,7 @@ const Test = () => {
 
   console.log(dataTest);
 
-  // useEffect(() => {
-  //   data1?.map((data, index) => {
-  //     data.testQuestions &&
-  //       data.testQuestions?.map((index1) => {
-  //         return (document.getElementById(`chon${index}${index1}`).value = "");
-  //       });
-  //   });
-  // }, [refreshData]);
-
   console.log(data1);
-
-  // console.log(data2);
-
-  // const [randomData, setRandomData] = useState(() => {
-  //   return data123;
-  // });
-  // setRandomData(data123);
-  // console.log(randomData);
-
-  // const [randomData2, setRandomData2] = useState(() =>
-  //   getRandomIndexOfArray2(data123)
-  // );
-
-  // console.log(randomData);
-  //console.log(randomData2);
 
   const Check = (x, y) => {
     //let mark = true;
@@ -249,13 +210,6 @@ const Test = () => {
 
   const Check2 = () => {
     const a = dataTest.testQuestionAll;
-    // const b = a[0].testQuestions;
-    // console.log(b);
-    // dataTest.testQuestionAll?.forEach((test, index) => {
-    //   test.testQuestions?.forEach((index1) => {
-    //     document.getElementById("chon" + `${index}${index1}`).value = "";
-    //   });
-    // });
 
     for (let i = 0; i < a.length; i++) {
       for (let j = 0; j < a[i].testQuestions.length; j++) {
@@ -266,13 +220,43 @@ const Test = () => {
         document.getElementById(`${i}${j}3`).style.color = "black";
       }
     }
-    // document.getElementById("chon00").value = "";
-    // document.getElementById("chon01").value = "";
+
     setRefreshData(!refreshData);
   };
 
+  const DATA = [
+    { id: 1, link: "/de-thi/de-thi-n1", name: "N1" },
+    { id: 2, link: "/de-thi/de-thi-n2", name: "N2" },
+    { id: 3, link: "/de-thi/de-thi-n3", name: "N3" },
+    { id: 4, link: "/de-thi/de-thi-n4", name: "N4" },
+    { id: 5, link: "/de-thi/de-thi-n5", name: "N5" },
+  ];
+
   return (
     <>
+      <div class="heading-container">
+        <div className="heading">
+          <div className="heading-title">Đề thi</div>
+          <div className="heading-links">
+            {DATA.map((element, index) => (
+              <Link
+                key={index}
+                to={element.link}
+                className={
+                  currentCase === index + 1
+                    ? "heading-links-item active"
+                    : "heading-links-item"
+                }
+                // onClick={() => {
+                //   currentSelector(element.id);
+                // }}
+              >
+                {element.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="test-header-container">
         <div className="test-header">
           <div className="test-header-left">

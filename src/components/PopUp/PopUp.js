@@ -12,6 +12,8 @@ import ExamPageAll from "../ExamPage/ExamPageAll";
 import ExamPageSingle from "../ExamPage/ExamPageSingle";
 import { MdOutlineClose } from "react-icons/md";
 import Logo from "../../assets/Logo/learn-language.png";
+import HomPage from "../HomePage";
+import ExamHomPage from "../ExamPage/ExamHomPage";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -26,12 +28,12 @@ const PopUp = () => {
       {popup ? (
         <div>
           <Navbar handleClickOpen={handleClickOpen} />
-          <NavbarHeading />
+          {/* <NavbarHeading /> */}
           <Routes>
-            {/* <Route path="/" element={<HomPage />} /> */}
+            <Route path="/" element={<HomPage />} />
             <Route path="/test/:id" element={<Test />} />
-            <Route path="/de-thi-tong-hop" element={<ExamPageAll />} />
-            <Route path="/de-thi/" element={<ExamPageSingle />} />
+            <Route path="/de-thi/:id" element={<ExamPageAll />} />
+            <Route path="/tests/:id" element={<ExamPageSingle />} />
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>
