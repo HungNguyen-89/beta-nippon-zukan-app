@@ -37,7 +37,7 @@ const PopUp = () => {
             <Route path="/tu-vung" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       ) : (
         <div className="main">

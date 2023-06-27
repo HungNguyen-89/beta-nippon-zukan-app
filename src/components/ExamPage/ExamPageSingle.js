@@ -3,6 +3,7 @@ import "./ExamPageSingle.scss";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import NavbarHeading from "../NavbarHeading/NavbarHeading";
+import { SlNote } from "react-icons/sl";
 
 const ExamPageSingle = () => {
   const [currentCase, setCurrentCase] = useState("");
@@ -84,7 +85,10 @@ const ExamPageSingle = () => {
                     className="heading-links-item"
                     to={`/test/${content.link}-${content.id}`}
                   >
-                    START
+                    <span className="heading-links-item-icon">
+                      <SlNote />
+                    </span>
+                    スタート
                   </Link>
                 </button>
               </div>

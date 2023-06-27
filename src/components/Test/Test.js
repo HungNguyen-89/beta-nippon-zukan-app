@@ -3,7 +3,10 @@ import "./Test.scss";
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import NavbarHeading from "../NavbarHeading/NavbarHeading";
+import { TbListNumbers } from "react-icons/tb";
+import { FiCheckSquare } from "react-icons/fi";
+import { TbRefresh } from "react-icons/tb";
+import { VscBook } from "react-icons/vsc";
 
 const array1 = ["A.", "B.", "C.", "D."];
 
@@ -210,7 +213,6 @@ const Test = () => {
 
   const Check2 = () => {
     const a = dataTest.testQuestionAll;
-
     for (let i = 0; i < a.length; i++) {
       for (let j = 0; j < a[i].testQuestions.length; j++) {
         document.getElementById(`chon${i}${j}`).value = "";
@@ -220,7 +222,6 @@ const Test = () => {
         document.getElementById(`${i}${j}3`).style.color = "black";
       }
     }
-
     setRefreshData(!refreshData);
   };
 
@@ -261,16 +262,15 @@ const Test = () => {
         <div className="test-header">
           <div className="test-header-left">
             <Link className="test-title" to={`/tests/${dataTest.link}`}>
+              <span className="test-title-icon">
+                <VscBook />
+              </span>
               {dataTest.testName}
             </Link>
             <div className="test-number">{dataTest.testSerial}</div>
           </div>
 
-          <div className="test-header-right">
-            <button className="submit" onClick={() => Check2()}>
-              RESET
-            </button>
-          </div>
+          <div className="test-header-right"></div>
         </div>
       </div>
 
@@ -327,6 +327,26 @@ const Test = () => {
             </div>
           </>
         ))}
+      </div>
+      <div className="under-btn-container">
+        <Link className="previous-list-btn" to={`/tests/${dataTest.link}`}>
+          <span className="previous-list-icon">
+            <TbListNumbers />
+          </span>
+          戻る
+        </Link>
+        <button className="exam-refresh-btn" onClick={() => Check2()}>
+          <span className="exam-refresh-btn-icon">
+            <TbRefresh />
+          </span>
+          リセット
+        </button>
+        <button className="exam-check-btn">
+          <span className="exam-check-icon">
+            <FiCheckSquare />
+          </span>
+          確認
+        </button>
       </div>
     </>
   );
