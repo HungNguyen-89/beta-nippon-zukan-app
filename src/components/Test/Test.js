@@ -39,6 +39,7 @@ const getRandomIndexOfArray = (array) => {
 const Test = () => {
   const { id } = useParams();
   const [currentCase, setCurrentCase] = useState("");
+  const [btn, setBtn] = useState(true);
 
   useEffect(() => {
     if (id.includes("n1")) {
@@ -106,7 +107,7 @@ const Test = () => {
   console.log(data1);
 
   const Check = (x, y) => {
-    //let mark = true;
+    let mark = true;
     const index = `${x}${y}`;
     const answerA = document.getElementById(index + "0");
     const answerB = document.getElementById(index + "1");
@@ -189,6 +190,21 @@ const Test = () => {
       document.getElementById(kt).innerHTML = "";
       document.getElementById(dapan).innerHTML = "";
     }
+
+    // let g = document.getElementById("chon11").value;
+    // console.log(g);
+    const a1 = dataTest.testQuestionAll;
+    for (let i = 0; i < a1.length; i++) {
+      for (let j = 0; j < a1[i].testQuestions.length; j++) {
+        let g = document.getElementById(`chon${i}${j}`).value;
+        if (g === "") {
+          mark = false;
+          break;
+        }
+      }
+    }
+
+    console.log(mark);
   };
 
   const answerDisplay = (index, index1, array) => {
@@ -232,6 +248,8 @@ const Test = () => {
     { id: 4, link: "/de-thi/de-thi-n4", name: "N4" },
     { id: 5, link: "/de-thi/de-thi-n5", name: "N5" },
   ];
+
+  const Check3 = () => {};
 
   return (
     <>
@@ -338,7 +356,11 @@ const Test = () => {
           </span>
           リセット
         </button>
-        <button className="exam-check-btn">
+        <button
+          className="exam-check-btn"
+          onClick={() => Check3()}
+          disabled={btn}
+        >
           <span className="exam-check-icon">
             <FiCheckSquare />
           </span>

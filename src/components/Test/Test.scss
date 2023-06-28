@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500&family=Poppins:wght@100;200;300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
 
-$font-japanese: "Noto Sans JP",
-sans-serif;
+$font-japanese: "Noto Sans JP", sans-serif;
 $pink: #ff1a1a;
 $blue: #001a66;
 $black: #302851;
@@ -55,7 +54,6 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
           align-items: center;
           font-size: 30px;
         }
-
       }
 
       .test-number {
@@ -66,7 +64,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
     // .test-header-right {
 
-    //   .exam-refresh-btn {  
+    //   .exam-refresh-btn {
     //     display: flex;
     //     align-items: center;
     //     justify-content: center;
@@ -87,8 +85,6 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     //       color: #001a66;
     //     }
     //   }
-
-
 
     // }
   }
@@ -223,7 +219,6 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
-
       background-color: #ff566c;
       //color: #001a66;
     }
@@ -251,7 +246,6 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
-
       background-color: #ff566c;
       //color: #001a66;
     }
@@ -279,12 +273,9 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
-
       background-color: #ff566c;
       //color: #001a66;
     }
-
-
   }
 }
 
@@ -300,14 +291,13 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        
 
         .test-title {
           display: flex;
           // display: block;
           // text-align: center;
           font-size: 22px;
-       width: 100%;
+          width: 100%;
           align-items: center;
           padding: 10px 20px;
         }
@@ -350,5 +340,29 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
   .under-btn-container {
     flex-direction: column;
+
+    .previous-list-btn {
+      font-size: 16px;
+
+      .previous-list-icon {
+        font-size: 18px;
+      }
+    }
+
+    .exam-refresh-btn {
+      font-size: 16px;
+
+      .exam-refresh-btn-icon {
+        font-size: 18px;
+      }
+    }
+
+    .exam-check-btn {
+      font-size: 16px;
+
+      .exam-check-icon {
+        font-size: 18px;
+      }
+    }
   }
 }
