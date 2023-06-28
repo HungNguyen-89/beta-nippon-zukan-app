@@ -248,9 +248,6 @@ const Test = () => {
                     ? "heading-links-item active"
                     : "heading-links-item"
                 }
-                // onClick={() => {
-                //   currentSelector(element.id);
-                // }}
               >
                 {element.name}
               </Link>

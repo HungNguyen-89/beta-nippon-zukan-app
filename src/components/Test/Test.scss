@@ -48,7 +48,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
         color: white;
         //font-weight: 200;
         font-size: 22px;
-        gap:10px;
+        gap: 10px;
 
         .test-title-icon {
           display: flex;
@@ -65,7 +65,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     }
 
     // .test-header-right {
-      
+
     //   .exam-refresh-btn {  
     //     display: flex;
     //     align-items: center;
@@ -87,9 +87,9 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     //       color: #001a66;
     //     }
     //   }
-      
-    
-      
+
+
+
     // }
   }
 }
@@ -199,32 +199,33 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: center;
   gap: 30px;
+  padding-bottom: 50px;
 
   .previous-list-btn {
     font-size: 20px;
     font-weight: 500;
     color: white;
     width: 150px;
-    padding: 10px 0;
-    background-color: #001a66;
+    padding: 8px 0;
+    background-color: #00c660;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border: solid 3px #001a66;
+    // border: solid 3px #001a66;
     cursor: pointer;
 
     .previous-list-icon {
       display: flex;
       align-content: center;
-      font-size: 30px;
+      font-size: 25px;
     }
 
     &:hover {
-      
-      background-color: white;
-      color: #001a66;
+
+      background-color: #ff566c;
+      //color: #001a66;
     }
   }
 
@@ -233,26 +234,26 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     font-weight: 500;
     color: white;
     width: 150px;
-    padding: 10px 0;
-    background-color: #001a66;
+    padding: 8px 0;
+    background-color: #00c660;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    border: solid 3px #001a66;
+    //border: solid 3px #001a66;
     cursor: pointer;
 
     .exam-refresh-btn-icon {
       display: flex;
       align-content: center;
-      font-size: 30px;
+      font-size: 25px;
     }
 
     &:hover {
-      
-      background-color: white;
-      color: #001a66;
+
+      background-color: #ff566c;
+      //color: #001a66;
     }
   }
 
@@ -261,29 +262,29 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     font-weight: 500;
     color: white;
     width: 150px;
-    padding: 10px 0;
-    background-color: #001a66;
+    padding: 8px 0;
+    background-color: #00c660;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border: solid 3px #001a66;
+    //border: solid 3px #001a66;
     cursor: pointer;
 
     .exam-check-icon {
       display: flex;
       align-content: center;
-      font-size: 30px;
+      font-size: 25px;
     }
 
     &:hover {
-      
-      background-color: white;
-      color: #001a66;
+
+      background-color: #ff566c;
+      //color: #001a66;
     }
 
-    
+
   }
 }
 
@@ -293,15 +294,26 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
     .test-header {
       flex-direction: column;
-      align-items: flex-start;
+      //align-items: flex-start;
 
       .test-header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        
+
         .test-title {
-          font-size: 20px;
+          display: flex;
+          // display: block;
+          // text-align: center;
+          font-size: 22px;
+       width: 100%;
+          align-items: center;
+          padding: 10px 20px;
         }
 
         .test-number {
-          font-size: 20px;
+          font-size: 22px;
         }
       }
     }
@@ -334,5 +346,9 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
         }
       }
     }
+  }
+
+  .under-btn-container {
+    flex-direction: column;
   }
 }

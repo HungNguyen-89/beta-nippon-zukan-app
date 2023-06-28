@@ -37,29 +37,32 @@
 
       .examp-page-single-item-btn {
 
+        background-color: transparent;
+
         .heading-links-item {
           display: flex;
           align-items: center;
-          background-color: #001a66;
-          border: solid #001a66 3px;
-          color:white;
+          background-color:#00c660;
+        //  border: solid #00c660 3px;
+         
+          color: white;
           padding: 6px 20px;
           font-size: 20px;
-          font-weight: 400;
+          font-weight: 500;
           border-radius: 8px;
           font-family: "Noto Sans JP", sans-serif;
           gap: 10px;
           cursor: pointer;
 
-          .heading-links-item-icon{
+          .heading-links-item-icon {
             display: flex;
-          align-items: center;
-          font-size: 25px;
+            align-items: center;
+            font-size: 30px;
           }
 
           &:hover {
-            background-color: white;
-            color: #001a66;
+            background-color: #ff566c;
+            //color: #001a66;
           }
         }
       }
@@ -77,18 +80,27 @@
       text-align: center;
 
       .exam-page-single-title {
-        font-size: 18px;
+        font-size: 22px;
+        //padding: 10px 15px;
       }
     }
 
     .exam-page-single-items {
       .exam-page-single-item {
         .exam-page-single-item-name {
-          font-size: 18px;
+          font-size: 20px;
         }
 
         .examp-page-single-item-btn {
-          font-size: 16px;
+
+          .heading-links-item {
+            font-size: 16px;
+
+            .heading-links-item-icon{
+              font-size: 18px;
+            }
+          }
+
         }
       }
     }
