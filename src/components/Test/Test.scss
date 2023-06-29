@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500&family=Poppins:wght@100;200;300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
 
-$font-japanese: "Noto Sans JP", sans-serif;
+$font-japanese: "Noto Sans JP",
+sans-serif;
 $pink: #ff1a1a;
 $blue: #001a66;
 $black: #302851;
@@ -179,6 +180,10 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
           font-size: 1.5rem;
         }
 
+        .selectAnswer-hidden{
+          display: none;
+        }
+
         .textHidden {
           -webkit-user-select: none;
           -moz-user-select: none;
@@ -276,6 +281,20 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
       background-color: #ff566c;
       //color: #001a66;
     }
+  }
+
+  .exam-check-btn-disabled {
+    background-color: #dddddd;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    width: 150px;
+    padding: 8px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 }
 

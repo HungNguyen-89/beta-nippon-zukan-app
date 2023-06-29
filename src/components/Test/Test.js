@@ -39,7 +39,7 @@ const getRandomIndexOfArray = (array) => {
 const Test = () => {
   const { id } = useParams();
   const [currentCase, setCurrentCase] = useState("");
-  const [btn, setBtn] = useState(true);
+  const [btn, setBtn] = useState(false);
 
   useEffect(() => {
     if (id.includes("n1")) {
@@ -107,13 +107,13 @@ const Test = () => {
   console.log(data1);
 
   const Check = (x, y) => {
-    let mark = true;
     const index = `${x}${y}`;
     const answerA = document.getElementById(index + "0");
     const answerB = document.getElementById(index + "1");
     const answerC = document.getElementById(index + "2");
     const answerD = document.getElementById(index + "3");
     let indexAnswer;
+    let mark = true;
 
     let chon = "chon" + index;
     let kt = "check" + index;
@@ -190,21 +190,6 @@ const Test = () => {
       document.getElementById(kt).innerHTML = "";
       document.getElementById(dapan).innerHTML = "";
     }
-
-    // let g = document.getElementById("chon11").value;
-    // console.log(g);
-    const a1 = dataTest.testQuestionAll;
-    for (let i = 0; i < a1.length; i++) {
-      for (let j = 0; j < a1[i].testQuestions.length; j++) {
-        let g = document.getElementById(`chon${i}${j}`).value;
-        if (g === "") {
-          mark = false;
-          break;
-        }
-      }
-    }
-
-    console.log(mark);
   };
 
   const answerDisplay = (index, index1, array) => {
@@ -239,6 +224,7 @@ const Test = () => {
       }
     }
     setRefreshData(!refreshData);
+    // setBtn(false);
   };
 
   const DATA = [
@@ -249,7 +235,45 @@ const Test = () => {
     { id: 5, link: "/de-thi/de-thi-n5", name: "N5" },
   ];
 
-  const Check3 = () => {};
+  const Check3 = () => {
+    let mark = true;
+    const a1 = dataTest.testQuestionAll;
+    for (let i = 0; i < a1.length; i++) {
+      for (let j = 0; j < a1[i].testQuestions.length; j++) {
+        let g = document.getElementById(`chon${i}${j}`).value;
+        if (g === "") {
+          mark = true;
+          break;
+        } else mark = false;
+      }
+      console.log(mark);
+    }
+    // const funAddClass = () => {
+    //   const list = document.getElementsById("chon00").classList;
+    //   list.remove("selectAnswer");
+    // };
+    // const list = document.getElementsById("chon00");
+    if (mark) {
+      alert("Ban phai chon het dap an");
+    } else {
+      // setBtn(true);
+      //funAddClass();
+      // document.getElementsById("chon00").innerHTML = "";
+      const a = dataTest.testQuestionAll;
+      for (let i = 0; i < a.length; i++) {
+        for (let j = 0; j < a[i].testQuestions.length; j++) {
+          document.getElementById(`select${i}${j}`).innerHTML = "";
+        }
+      }
+
+      document
+        .getElementById("exam-check-btn")
+        .classList.remove("exam-check-btn");
+      document
+        .getElementById("exam-check-btn")
+        .classList.add("exam-check-btn-disabled");
+    }
+  };
 
   return (
     <>
@@ -357,6 +381,7 @@ const Test = () => {
           リセット
         </button>
         <button
+          id="exam-check-btn"
           className="exam-check-btn"
           onClick={() => Check3()}
           disabled={btn}
