@@ -7,6 +7,7 @@ import { TbListNumbers } from "react-icons/tb";
 import { FiCheckSquare } from "react-icons/fi";
 import { TbRefresh } from "react-icons/tb";
 import { VscBook } from "react-icons/vsc";
+import { GiCheckMark } from "react-icons/gi";
 
 const array1 = ["A.", "B.", "C.", "D."];
 
@@ -87,24 +88,20 @@ const Test = () => {
     };
   });
 
-  useEffect(() => {
-    dataTest.testQuestionAll?.map((test) => {
-      const data5 = getRandomIndexOfArray(test.testQuestions);
-      const data3 = data5?.map((test3) => {
-        return getRandomIndexOfArray(test3.answerToChoose);
-      });
+  // useEffect(() => {
+  //   dataTest.testQuestionAll?.map((test) => {
+  //     const data5 = getRandomIndexOfArray(test.testQuestions);
+  //     const data3 = data5?.map((test3) => {
+  //       return getRandomIndexOfArray(test3.answerToChoose);
+  //     });
 
-      return {
-        question: test.testQuestionTitle,
-        testQuestions: data5,
-        testAnswerRandom: data3,
-      };
-    });
-  }, [refreshData]);
-
-  console.log(dataTest);
-
-  console.log(data1);
+  //     return {
+  //       question: test.testQuestionTitle,
+  //       testQuestions: data5,
+  //       testAnswerRandom: data3,
+  //     };
+  //   });
+  // }, [refreshData]);
 
   const Check = (x, y) => {
     const index = `${x}${y}`;
@@ -181,9 +178,11 @@ const Test = () => {
 
     if (b !== -1) {
       if (indexAnswer === b) {
-        document.getElementById(kt).innerHTML = "正解";
+        document.getElementById(kt).innerHTML = "✓";
+        document.getElementById(kt).classList.add("correct");
       } else {
-        document.getElementById(kt).innerHTML = "NG";
+        document.getElementById(kt).innerHTML = "✖";
+        document.getElementById(kt).classList.add("un-correct");
       }
       document.getElementById(dapan).innerHTML = indexAnswer + 1;
     } else {
@@ -216,15 +215,24 @@ const Test = () => {
     const a = dataTest.testQuestionAll;
     for (let i = 0; i < a.length; i++) {
       for (let j = 0; j < a[i].testQuestions.length; j++) {
+        document
+          .getElementById(`chon${i}${j}`)
+          .classList.remove("selectAnswer-hidden");
+        document.getElementById(`chon${i}${j}`).classList.add("selectAnswer");
         document.getElementById(`chon${i}${j}`).value = "";
         document.getElementById(`${i}${j}0`).style.color = "black";
         document.getElementById(`${i}${j}1`).style.color = "black";
         document.getElementById(`${i}${j}2`).style.color = "black";
         document.getElementById(`${i}${j}3`).style.color = "black";
+        document
+          .getElementById(`check${i}${j}`)
+          .classList.remove("textHidden-display");
+        document.getElementById(`check${i}${j}`).classList.add("textHidden");
       }
     }
+
+    document.getElementById("exam-check-btn").disabled = false;
     setRefreshData(!refreshData);
-    // setBtn(false);
   };
 
   const DATA = [
@@ -248,30 +256,37 @@ const Test = () => {
       }
       console.log(mark);
     }
-    // const funAddClass = () => {
-    //   const list = document.getElementsById("chon00").classList;
-    //   list.remove("selectAnswer");
-    // };
-    // const list = document.getElementsById("chon00");
+
     if (mark) {
-      alert("Ban phai chon het dap an");
+      alert("Bạn vui lòng chọn hết các đáp án");
     } else {
-      // setBtn(true);
-      //funAddClass();
-      // document.getElementsById("chon00").innerHTML = "";
       const a = dataTest.testQuestionAll;
       for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < a[i].testQuestions.length; j++) {
-          document.getElementById(`select${i}${j}`).innerHTML = "";
+          let checkAnswer = document.getElementById(`check${i}${j}`).innerHTML;
+          if (checkAnswer === "✖") {
+            let resultIndex =
+              parseInt(document.getElementById(`dapan${i}${j}`).innerHTML) - 1;
+            document.getElementById(`${i}${j}${resultIndex}`).style.color =
+              "red";
+          }
+
+          document
+            .getElementById(`chon${i}${j}`)
+            .classList.remove("selectAnswer");
+          document
+            .getElementById(`chon${i}${j}`)
+            .classList.add("selectAnswer-hidden");
+          document
+            .getElementById(`check${i}${j}`)
+            .classList.remove("textHidden");
+          document
+            .getElementById(`check${i}${j}`)
+            .classList.add("textHidden-display");
         }
       }
 
-      document
-        .getElementById("exam-check-btn")
-        .classList.remove("exam-check-btn");
-      document
-        .getElementById("exam-check-btn")
-        .classList.add("exam-check-btn-disabled");
+      document.getElementById("exam-check-btn").disabled = true;
     }
   };
 
@@ -352,12 +367,10 @@ const Test = () => {
                         <div
                           className="textHidden"
                           id={`check${index}${index1}`}
-                          style={{ color: "black" }}
                         ></div>
                         <div
                           className="textHidden"
                           id={`dapan${index}${index1}`}
-                          style={{ color: "black" }}
                         ></div>
                       </div>
                     </div>
