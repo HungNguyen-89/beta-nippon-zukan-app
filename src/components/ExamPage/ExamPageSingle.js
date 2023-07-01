@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./ExamPageSingle.scss";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import { GiNotebook } from "react-icons/gi";
+import Loading from "../Loading/Loading";
+import { VscBook } from "react-icons/vsc";
 
 const ExamPageSingle = () => {
   const [currentCase, setCurrentCase] = useState("");
   const { id } = useParams();
   console.log(id);
   const [dataTest, setDataTest] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (id.includes("n1")) {
@@ -33,6 +35,7 @@ const ExamPageSingle = () => {
       let data = res && res.data ? res.data : [];
       console.log(res.data);
       setDataTest(data);
+      setLoading(true);
     };
 
     asyncFn();
@@ -71,31 +74,44 @@ const ExamPageSingle = () => {
           </div>
         </div>
       </div>
-      <div className="exam-page-single-container">
-        <div>
-          <div className="exam-page-single-header">
-            <div className="exam-page-single-title">{dataTest.testName}</div>
-          </div>
-          <div className="exam-page-single-items">
-            {dataTest.testData?.map((content) => (
-              <div className="exam-page-single-item">
-                <div className="exam-page-single-item-name">{content.name}</div>
-                <button className="examp-page-single-item-btn">
-                  <Link
-                    className="heading-links-item"
-                    to={`/test/${content.link}-${content.id}`}
-                  >
-                    <span className="heading-links-item-icon">
-                      <GiNotebook />
-                    </span>
-                    スタート
-                  </Link>
-                </button>
+      {loading ? (
+        <>
+          <div className="exam-page-single-container">
+            <div>
+              <div className="exam-page-single-header">
+                <div className="exam-page-single-title">
+                  <span className="exam-page-single-title-icon">
+                    <VscBook />
+                  </span>
+                  {dataTest.testName}
+                </div>
               </div>
-            ))}
+              <div className="exam-page-single-items">
+                {dataTest.testData?.map((content) => (
+                  <div className="exam-page-single-item">
+                    <div className="exam-page-single-item-name">
+                      {content.name}
+                    </div>
+                    <button className="examp-page-single-item-btn">
+                      <Link
+                        className="heading-links-item"
+                        to={`/test/${content.link}-${content.id}`}
+                      >
+                        <span className="heading-links-item-icon">
+                          <GiNotebook />
+                        </span>
+                        スタート
+                      </Link>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

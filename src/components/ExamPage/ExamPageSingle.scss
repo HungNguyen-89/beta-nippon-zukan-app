@@ -12,10 +12,19 @@
     border-bottom: #001a66 solid 1px;
 
     .exam-page-single-title {
+      display: flex;
+      align-items: center;
       background-color: #001a66;
-      font-size: 25px;
+      font-size: 22px;
       color: white;
-      padding: 5px 15px;
+      padding: 5px 20px;
+      gap: 10px;
+
+      .exam-page-single-title-icon {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+      }
     }
   }
 
@@ -36,15 +45,14 @@
       }
 
       .examp-page-single-item-btn {
-
         background-color: transparent;
 
         .heading-links-item {
           display: flex;
           align-items: center;
-          background-color:#00c660;
-        //  border: solid #00c660 3px;
-         
+          background-color: #00c660;
+          //  border: solid #00c660 3px;
+
           color: white;
           padding: 6px 20px;
           font-size: 20px;
@@ -92,15 +100,13 @@
         }
 
         .examp-page-single-item-btn {
-
           .heading-links-item {
             font-size: 16px;
 
-            .heading-links-item-icon{
+            .heading-links-item-icon {
               font-size: 18px;
             }
           }
-
         }
       }
     }

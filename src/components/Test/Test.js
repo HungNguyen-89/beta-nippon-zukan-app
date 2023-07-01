@@ -7,7 +7,7 @@ import { TbListNumbers } from "react-icons/tb";
 import { FiCheckSquare } from "react-icons/fi";
 import { TbRefresh } from "react-icons/tb";
 import { VscBook } from "react-icons/vsc";
-import { GiCheckMark } from "react-icons/gi";
+import Loading from "../Loading/Loading";
 
 const array1 = ["A.", "B.", "C.", "D."];
 
@@ -41,6 +41,7 @@ const Test = () => {
   const { id } = useParams();
   const [currentCase, setCurrentCase] = useState("");
   const [btn, setBtn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (id.includes("n1")) {
@@ -66,8 +67,8 @@ const Test = () => {
         `https://db-beta-nippon-zukan.onrender.com/${urlStart}/${urlEnd}`
       );
       let data = res && res.data ? res.data : [];
-
       setDataTest(data);
+      setLoading(true);
     };
 
     asyncFn();
@@ -110,7 +111,6 @@ const Test = () => {
     const answerC = document.getElementById(index + "2");
     const answerD = document.getElementById(index + "3");
     let indexAnswer;
-    let mark = true;
 
     let chon = "chon" + index;
     let kt = "check" + index;
@@ -266,7 +266,7 @@ const Test = () => {
       for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < a[i].testQuestions.length; j++) {
           let checkAnswer = document.getElementById(`check${i}${j}`).innerHTML;
-          if (checkAnswer === "✖") {
+          if (checkAnswer === "✕") {
             let resultIndex =
               parseInt(document.getElementById(`dapan${i}${j}`).innerHTML) - 1;
             document.getElementById(`${i}${j}${resultIndex}`).style.color =
@@ -314,99 +314,104 @@ const Test = () => {
           </div>
         </div>
       </div>
-      <div className="test-header-container">
-        <div className="test-header">
-          <div className="test-header-left">
-            <Link className="test-title" to={`/tests/${dataTest.link}`}>
-              <span className="test-title-icon">
-                <VscBook />
-              </span>
-              {dataTest.testName}
-            </Link>
-            <div className="test-number">{dataTest.testSerial}</div>
+      {loading ? (
+        <>
+          <div className="test-header-container">
+            <div className="test-header">
+              <div className="test-header-left">
+                <Link className="test-title" to={`/tests/${dataTest.link}`}>
+                  <span className="test-title-icon">
+                    <VscBook />
+                  </span>
+                  {dataTest.testName}
+                </Link>
+                <div className="test-number">{dataTest.testSerial}</div>
+              </div>
+              <div className="test-header-right"></div>
+            </div>
           </div>
 
-          <div className="test-header-right"></div>
-        </div>
-      </div>
+          <div className="test-background">
+            {data1?.map((data, index) => (
+              <>
+                <div id="questionMondai1">{data.question}</div>
+                <div id="backgroundMondai1">
+                  {data.testQuestions &&
+                    data.testQuestions?.map((item, index1) => {
+                      return (
+                        <div className="questionRandom">
+                          <div className="questionNumber">
+                            {index1 + 1}
+                            {`. `}
+                            {item.question1}
+                            <span className="textTest">{item.question2}</span>
+                            {item.question3}
+                          </div>
+                          {answerDisplay(
+                            index,
+                            index1,
+                            data.testAnswerRandom[index1]
+                          )}
 
-      <div className="test-background">
-        {data1?.map((data, index) => (
-          <>
-            <div id="questionMondai1">{data.question}</div>
-            <div id="backgroundMondai1">
-              {data.testQuestions &&
-                data.testQuestions?.map((item, index1) => {
-                  return (
-                    <div className="questionRandom">
-                      <div className="questionNumber">
-                        {index1 + 1}
-                        {`. `}
-                        {item.question1}
-                        <span className="textTest">{item.question2}</span>
-                        {item.question3}
-                      </div>
-                      {answerDisplay(
-                        index,
-                        index1,
-                        data.testAnswerRandom[index1]
-                      )}
-
-                      <div className="selectAnswerABCD">
-                        <div id={`select${index}${index1}`}>
-                          <select
-                            className="selectAnswer"
-                            id={`chon${index}${index1}`}
-                            onChange={() => Check(index, index1)}
-                          >
-                            <option value=""></option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                          </select>
+                          <div className="selectAnswerABCD">
+                            <div id={`select${index}${index1}`}>
+                              <select
+                                className="selectAnswer"
+                                id={`chon${index}${index1}`}
+                                onChange={() => Check(index, index1)}
+                              >
+                                <option value=""></option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                              </select>
+                            </div>
+                            <div
+                              className="textHidden"
+                              id={`check${index}${index1}`}
+                            ></div>
+                            <div
+                              className="textHidden"
+                              id={`dapan${index}${index1}`}
+                            ></div>
+                          </div>
                         </div>
-                        <div
-                          className="textHidden"
-                          id={`check${index}${index1}`}
-                        ></div>
-                        <div
-                          className="textHidden"
-                          id={`dapan${index}${index1}`}
-                        ></div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-          </>
-        ))}
-      </div>
-      <div className="under-btn-container">
-        <Link className="previous-list-btn" to={`/tests/${dataTest.link}`}>
-          <span className="previous-list-icon">
-            <TbListNumbers />
-          </span>
-          戻る
-        </Link>
-        <button className="exam-refresh-btn" onClick={() => Check2()}>
-          <span className="exam-refresh-btn-icon">
-            <TbRefresh />
-          </span>
-          リセット
-        </button>
-        <button
-          id="exam-check-btn"
-          className="exam-check-btn"
-          onClick={() => Check3()}
-          disabled={btn}
-        >
-          <span className="exam-check-icon">
-            <FiCheckSquare />
-          </span>
-          確認
-        </button>
-      </div>
+                      );
+                    })}
+                </div>
+              </>
+            ))}
+          </div>
+          <div className="under-btn-container">
+            <Link className="previous-list-btn" to={`/tests/${dataTest.link}`}>
+              <span className="previous-list-icon">
+                <TbListNumbers />
+              </span>
+              戻る
+            </Link>
+            <button className="exam-refresh-btn" onClick={() => Check2()}>
+              <span className="exam-refresh-btn-icon">
+                <TbRefresh />
+              </span>
+              リセット
+            </button>
+            <button
+              id="exam-check-btn"
+              className="exam-check-btn"
+              onClick={() => Check3()}
+              disabled={btn}
+            >
+              <span className="exam-check-icon">
+                <FiCheckSquare />
+              </span>
+              確認
+            </button>
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

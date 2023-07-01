@@ -8,12 +8,12 @@ import Test from "../Test/Test";
 const ExamHomPage = () => {
   return (
     <div className="exam-home-page">
-      <NavbarHeading />
+      {/* <NavbarHeading />
       <Routes>
         <Route path="/test/:id" element={<Test />} />
         <Route path="/de-thi/:id" element={<ExamPageAll />} />
         <Route path="/de-thi/" element={<ExamPageSingle />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 };

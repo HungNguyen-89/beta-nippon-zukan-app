@@ -7,13 +7,13 @@ import Course3 from "../../assets/ExamPage/course-3.png";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import NavbarHeading from "../NavbarHeading/NavbarHeading";
+import Loading from "../Loading/Loading";
 
 const ExamPageAll = () => {
   const [dataTestAll, setDataTestAll] = useState([]);
-
   const { id } = useParams();
-
   const [currentCase, setCurrentCase] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // const currentSelector = (num) => {
   //   setCurrentCase(num);
@@ -43,6 +43,7 @@ const ExamPageAll = () => {
       let data = res && res.data ? res.data : [];
       console.log(res.data);
       setDataTestAll(data);
+      setLoading(true);
     };
 
     asyncFn();
@@ -81,27 +82,33 @@ const ExamPageAll = () => {
           </div>
         </div>
       </div>
-      <div className="test-container">
-        {dataTestAll.books?.map((testAll) => (
-          <div className="test">
-            <div className="box-up">
-              <img src={testAll.img} alt="" />
-              <div className="content">
-                <span>{testAll.category}</span>
-                <h3>{testAll.name}</h3>
+      {loading ? (
+        <>
+          <div className="test-container">
+            {dataTestAll.books?.map((testAll) => (
+              <div className="test">
+                <div className="box-up">
+                  <img src={testAll.img} alt="" />
+                  <div className="content">
+                    <span>{testAll.category}</span>
+                    <h3>{testAll.name}</h3>
+                  </div>
+                </div>
+                <div className="box-down">
+                  <Link to={testAll.link} className="exam-btn">
+                    Vào học
+                  </Link>
+                  <div className="exam-module-icons">
+                    <FaBook /> {testAll.modules} modules
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="box-down">
-              <Link to={testAll.link} className="exam-btn">
-                Vào học
-              </Link>
-              <div className="exam-module-icons">
-                <FaBook /> {testAll.modules} modules
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
