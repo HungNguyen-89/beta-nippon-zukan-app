@@ -181,7 +181,7 @@ const Test = () => {
         document.getElementById(kt).innerHTML = "✓";
         document.getElementById(kt).classList.add("correct");
       } else {
-        document.getElementById(kt).innerHTML = "✖";
+        document.getElementById(kt).innerHTML = "✕";
         document.getElementById(kt).classList.add("un-correct");
       }
       document.getElementById(dapan).innerHTML = indexAnswer + 1;
@@ -224,6 +224,8 @@ const Test = () => {
         document.getElementById(`${i}${j}1`).style.color = "black";
         document.getElementById(`${i}${j}2`).style.color = "black";
         document.getElementById(`${i}${j}3`).style.color = "black";
+        document.getElementById(`check${i}${j}`).classList.remove("correct");
+        document.getElementById(`check${i}${j}`).classList.remove("un-correct");
         document
           .getElementById(`check${i}${j}`)
           .classList.remove("textHidden-display");
