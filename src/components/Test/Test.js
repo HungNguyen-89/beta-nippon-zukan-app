@@ -410,7 +410,9 @@ const Test = () => {
           </div>
         </>
       ) : (
-        <Loading />
+        <div className="loading-container">
+          <Loading />
+        </div>
       )}
     </>
   );

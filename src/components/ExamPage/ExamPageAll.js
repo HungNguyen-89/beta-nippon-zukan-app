@@ -107,7 +107,9 @@ const ExamPageAll = () => {
           </div>
         </>
       ) : (
-        <Loading />
+        <div className="loading-container">
+          <Loading />
+        </div>
       )}
     </>
   );
