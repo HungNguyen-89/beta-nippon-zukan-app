@@ -5,6 +5,7 @@ import axios from "axios";
 import { GiNotebook } from "react-icons/gi";
 import Loading from "../Loading/Loading";
 import { VscBook } from "react-icons/vsc";
+import { TbListNumbers } from "react-icons/tb";
 
 const ExamPageSingle = () => {
   const [currentCase, setCurrentCase] = useState("");
@@ -105,6 +106,17 @@ const ExamPageSingle = () => {
                     </button>
                   </div>
                 ))}
+              </div>
+              <div className="under-btn-container">
+                <Link
+                  className="previous-list-btn"
+                  to={`/tests/${dataTest.link}`}
+                >
+                  <span className="previous-list-icon">
+                    <TbListNumbers />
+                  </span>
+                  戻る
+                </Link>
               </div>
             </div>
           </div>

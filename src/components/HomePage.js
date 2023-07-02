@@ -12,7 +12,7 @@ import photoBlogs from "../assets/HomPage/category-5.png";
 const HomPage = () => {
   return (
     <>
-      <section className="home">
+      {/* <section className="home">
         <div className="content">
           <h3>
             Nippon Dict - Hệ thống từ điển từ vựng, ngữ pháp dùng ôn luyện JLPT
@@ -28,7 +28,7 @@ const HomPage = () => {
             <option value="">Việt - Nhật</option>
           </select>
         </div>
-      </section>
+      </section> */}
       <section className="category-container">
         <section className="category">
           <Link to="/" className="box">

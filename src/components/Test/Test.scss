@@ -403,28 +403,29 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
   .under-btn-container {
     flex-direction: column;
+    gap:20px;
 
     .previous-list-btn {
-      font-size: 16px;
+      font-size: 18px;
 
       .previous-list-icon {
-        font-size: 18px;
+        font-size: 20px;
       }
     }
 
     .exam-refresh-btn {
-      font-size: 16px;
+      font-size: 18px;
 
       .exam-refresh-btn-icon {
-        font-size: 18px;
+        font-size: 20px;
       }
     }
 
     .exam-check-btn {
-      font-size: 16px;
+      font-size: 18px;
 
       .exam-check-icon {
-        font-size: 18px;
+        font-size: 20px;
       }
     }
   }
