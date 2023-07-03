@@ -77,10 +77,9 @@ const NavbarMobile = ({ setPopUp }) => {
                 {route.subMenu &&
                   route.subRoutes.map((subRoute) => (
                     <ul className="mobile-nav-sub-links">
-                      <li>
+                      <li className="mobile-nav-sub-link">
                         <Link
                           to={subRoute.link}
-                          className="mobile-nav-sub-link"
                           onClick={() => {
                             setPopUp(true);
                           }}

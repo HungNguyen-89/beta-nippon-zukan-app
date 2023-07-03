@@ -28,7 +28,9 @@
     }
 
     .mobile-nav-sub-links-container {
+      
       .mobile-nav-sub-links {
+        width: 100%;
         list-style-type: none;
         border-top: solid 1px #6666;
         padding: 15px 0 15px 30px;
@@ -36,6 +38,11 @@
         .mobile-nav-sub-link {
           font-size: 20px;
           color: black;
+          display: flex;
+          
+          a{
+            width: 100%;
+          }
         }
       }
     }
