@@ -110,7 +110,7 @@ const ExamPageSingle = () => {
               <div className="under-btn-container">
                 <Link
                   className="previous-list-btn"
-                  to={`/tests/${dataTest.link}`}
+                  to={`/de-thi/${dataTest.category}`}
                 >
                   <span className="previous-list-icon">
                     <TbListNumbers />

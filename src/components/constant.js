@@ -6,69 +6,69 @@ export const routes = [
   },
   {
     name: "Từ vựng",
-    link: "/tu-vung",
-    subMenu: true,
-    subRoutes: [
-      {
-        name: "N1",
-        link: "/tu-vung",
-      },
-      {
-        name: "N2",
-        link: "/tu-vung/N2",
-      },
-      {
-        name: "N3",
-        link: "/tu-vung/N3",
-      },
-      {
-        name: "N4",
-        link: "/tu-vung/N4",
-      },
-      {
-        name: "N5",
-        link: "/tu-vung/N5",
-      },
-      {
-        name: "Theo chủ đề",
-        link: "/tu-vung/theo-chu-de",
-      },
-    ],
+    link: "",
+    subMenu: false,
+    // subRoutes: [
+    //   {
+    //     name: "N1",
+    //     link: "/tu-vung",
+    //   },
+    //   {
+    //     name: "N2",
+    //     link: "/tu-vung/N2",
+    //   },
+    //   {
+    //     name: "N3",
+    //     link: "/tu-vung/N3",
+    //   },
+    //   {
+    //     name: "N4",
+    //     link: "/tu-vung/N4",
+    //   },
+    //   {
+    //     name: "N5",
+    //     link: "/tu-vung/N5",
+    //   },
+    //   {
+    //     name: "Theo chủ đề",
+    //     link: "/tu-vung/theo-chu-de",
+    //   },
+    // ],
   },
   {
     name: "Ngữ pháp",
-    link: "/ngu-phap",
-    subMenu: true,
-    subRoutes: [
-      {
-        name: "N1",
-        link: "/ngu-phap/N1",
-      },
-      {
-        name: "N2",
-        link: "/ngu-phap/N2",
-      },
-      {
-        name: "N3",
-        link: "/ngu-phap/N3",
-      },
-      {
-        name: "N4",
-        link: "/ngu-phap/N4",
-      },
-      {
-        name: "N5",
-        link: "/ngu-phap/N5",
-      },
-      {
-        name: "JLPTにない文型",
-        link: "/ngu-phap/mau-cau-ngoai-JLPT",
-      },
-    ],
+    // link: false,
+    subMenu: false,
+    // subRoutes: [
+    //   {
+    //     name: "N1",
+    //     link: "/ngu-phap/N1",
+    //   },
+    //   {
+    //     name: "N2",
+    //     link: "/ngu-phap/N2",
+    //   },
+    //   {
+    //     name: "N3",
+    //     link: "/ngu-phap/N3",
+    //   },
+    //   {
+    //     name: "N4",
+    //     link: "/ngu-phap/N4",
+    //   },
+    //   {
+    //     name: "N5",
+    //     link: "/ngu-phap/N5",
+    //   },
+    //   {
+    //     name: "JLPTにない文型",
+    //     link: "/ngu-phap/mau-cau-ngoai-JLPT",
+    //   },
+    // ],
   },
   {
     name: "Đề thi",
-    link: "/de-thi",
+    link: "",
     subMenu: true,
     subRoutes: [
       {
@@ -100,32 +100,32 @@ export const routes = [
   {
     name: "Media",
     link: "/media",
-    subMenu: true,
-    subRoutes: [
-      {
-        name: "Video",
-        link: "/media/video",
-      },
-      {
-        name: "Audio",
-        link: "/media/audio",
-      },
-    ],
+    subMenu: false,
+    // subRoutes: [
+    //   {
+    //     name: "Video",
+    //     link: "/media/video",
+    //   },
+    //   {
+    //     name: "Audio",
+    //     link: "/media/audio",
+    //   },
+    // ],
   },
   {
     name: "Games",
     link: "/games",
-    subMenu: true,
-    subRoutes: [
-      {
-        name: "Nhìn Kanji đoán chữ",
-        link: "/games/nhin-kanji-doan-chu",
-      },
-      {
-        name: "Nhìn hình đoán chữ",
-        link: "/games/nhin-hinh-doan-chu",
-      },
-    ],
+    subMenu: false,
+    // subRoutes: [
+    //   {
+    //     name: "Nhìn Kanji đoán chữ",
+    //     link: "/games/nhin-kanji-doan-chu",
+    //   },
+    //   {
+    //     name: "Nhìn hình đoán chữ",
+    //     link: "/games/nhin-hinh-doan-chu",
+    //   },
+    // ],
   },
   {
     name: "Blog",

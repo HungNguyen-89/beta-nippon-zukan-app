@@ -16,21 +16,36 @@ const NavbarMobile = ({ setPopUp }) => {
           <ul className="mobile-nav-links">
             <li>
               <div className="mobile-nav-link-container">
-                <Link
-                  // to={route.link}
-                  className="mobile-nav-link"
-                  // onClick={() => {
-                  //   setPopUp(true);
-                  // }}
+                {!route.subMenu ? (
+                  <Link
+                    to={route.link}
+                    className="mobile-nav-link"
+                    // onClick={() => {
+                    //   setPopUp(true);
+                    // }}
 
-                  onClick={() =>
-                    heading !== route.name
-                      ? setHeading(route.name)
-                      : setHeading("")
-                  }
-                >
-                  {route.name}
-                </Link>
+                    onClick={() => {
+                      setPopUp(true);
+                      heading !== route.name
+                        ? setHeading(route.name)
+                        : setHeading("");
+                    }}
+                  >
+                    {route.name}
+                  </Link>
+                ) : (
+                  <Link
+                    className="mobile-nav-link"
+                    onClick={() => {
+                      heading !== route.name
+                        ? setHeading(route.name)
+                        : setHeading("");
+                    }}
+                  >
+                    {route.name}
+                  </Link>
+                )}
+
                 {route.subMenu &&
                   (heading === route.name ? (
                     <MdOutlineKeyboardArrowUp
